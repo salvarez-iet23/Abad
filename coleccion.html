@@ -397,8 +397,6 @@
         <div class="filter-bar">
             <button class="filter-btn active">Todos</button>
             <button class="filter-btn">Mujer</button>
-            <button class="filter-btn">Hombre</button>
-            <button class="filter-btn">Nuevo</button>
         </div>
     </div>
     
@@ -430,17 +428,108 @@
         const imageNames = [];
         for (let i = 1; i <= 10; i++) imageNames.push(`imagen${i}.jpg`);
 
+        // 🎯 NUEVAS DESCRIPCIONES BASADAS EN TU CAPTURA
         const prendasData = [
-            { nombre: "Blusa urbana", precio: "$39.990", color: "negro/beige", genero: "mujer", tela: "viscosa", estilo: "casual", temporada: "primavera" },
-            { nombre: "Camisa oversize", precio: "$49.500", color: "blanco/azul", genero: "hombre", tela: "lino", estilo: "elegante", temporada: "verano" },
-            { nombre: "Pantalón cargo", precio: "$59.900", color: "verde oliva", genero: "hombre", tela: "gabardina", estilo: "urbano", temporada: "otoño" },
-            { nombre: "Vestido midi", precio: "$45.990", color: "mostaza", genero: "mujer", tela: "poliéster", estilo: "fiesta", temporada: "invierno" },
-            { nombre: "Chaqueta denim", precio: "$79.900", color: "celeste", genero: "mujer", tela: "algodón", estilo: "casual", temporada: "primavera" },
-            { nombre: "Sweater básico", precio: "$32.500", color: "gris/negro", genero: "unisex", tela: "acrílico", estilo: "invierno", temporada: "otoño" },
-            { nombre: "Jean slim", precio: "$54.990", color: "azul oscuro", genero: "hombre", tela: "elastano", estilo: "moderno", temporada: "verano" },
-            { nombre: "Blazer formal", precio: "$89.900", color: "carbón", genero: "mujer", tela: "tejido", estilo: "oficina", temporada: "invierno" },
-            { nombre: "Top crop", precio: "$22.990", color: "blanco", genero: "mujer", tela: "algodón", estilo: "deportivo", temporada: "verano" },
-            { nombre: "Camiseta estampada", precio: "$27.900", color: "negro/rojo", genero: "hombre", tela: "sublimada", estilo: "urbano", temporada: "primavera" }
+            { 
+                nombre: "Blusa Parisina", 
+                precio: "$42.990", 
+                color: "Blanco / Negro", 
+                genero: "Mujer", 
+                tela: "Viscosa", 
+                estilo: "Elegante", 
+                temporada: "Primavera",
+                descripcion: "Blusa con mangas bombachas y cuello drapeado. Cierre posterior con botón forrado."
+            },
+            { 
+                nombre: "Vestido Floreado", 
+                precio: "$55.900", 
+                color: "Multicolor", 
+                genero: "Mujer", 
+                tela: "Poliéster", 
+                estilo: "Casual", 
+                temporada: "Verano",
+                descripcion: "Vestido largo con estampado floral, escote en V y mangas cortas. Incluye cintilla ajustable."
+            },
+            { 
+                nombre: "Falda Plisada", 
+                precio: "$39.500", 
+                color: "Mostaza", 
+                genero: "Mujer", 
+                tela: "Gabardina", 
+                estilo: "Urbano", 
+                temporada: "Otoño",
+                descripcion: "Falda midi plisada con pretina elástica. Ideal para look de oficina o casual elegante."
+            },
+            { 
+                nombre: "Vestido Negro", 
+                precio: "$48.990", 
+                color: "Negro", 
+                genero: "Mujer", 
+                tela: "Poliéster", 
+                estilo: "Fiesta", 
+                temporada: "Invierno",
+                descripcion: "Vestido negro ajustado, escote palabra de honor. Cierre lateral y forro interior."
+            },
+            { 
+                nombre: "Chaqueta Denim", 
+                precio: "$69.900", 
+                color: "Celeste", 
+                genero: "Mujer", 
+                tela: "Algodón", 
+                estilo: "Casual", 
+                temporada: "Primavera",
+                descripcion: "Chaqueta corta de denim con bolsillos frontales. Botones metálicos y detalles desgastados."
+            },
+            { 
+                nombre: "Sweater Oversize", 
+                precio: "$36.500", 
+                color: "Gris", 
+                genero: "Mujer", 
+                tela: "Acrílico", 
+                estilo: "Invierno", 
+                temporada: "Otoño",
+                descripcion: "Sweater de punto grueso, cuello redondo y mangas largas. Diseño oversize para máxima comodidad."
+            },
+            { 
+                nombre: "Blusa Satinada", 
+                precio: "$38.990", 
+                color: "Vino", 
+                genero: "Mujer", 
+                tela: "Seda", 
+                estilo: "Moderno", 
+                temporada: "Verano",
+                descripcion: "Blusa con lazo frontal y mangas largas. Tejido satinado con caída elegante."
+            },
+            { 
+                nombre: "Blazer Formal", 
+                precio: "$79.900", 
+                color: "Carbón", 
+                genero: "Mujer", 
+                tela: "Tejido", 
+                estilo: "Oficina", 
+                temporada: "Invierno",
+                descripcion: "Blazer estructurado con solapas y bolsillos. Forro interior y botones dorados."
+            },
+            { 
+                nombre: "Top Crop", 
+                precio: "$22.990", 
+                color: "Blanco", 
+                genero: "Mujer", 
+                tela: "Algodón", 
+                estilo: "Deportivo", 
+                temporada: "Verano",
+                descripcion: "Top corto con espalda descubierta y tiras ajustables. Fresco y versátil."
+            },
+            { 
+                nombre: "Vestido Estampado", 
+                precio: "$59.900", 
+                color: "Azul / Rojo", 
+                genero: "Mujer", 
+                tela: "Sublimada", 
+                estilo: "Elegante", 
+                temporada: "Primavera",
+                descripcion: "Vestido largo con estampado étnico, escote en V y abertura lateral. Incluye forro interior."
+            }
         ];
 
         const grid = document.getElementById('productGrid');
@@ -454,7 +543,7 @@
             card.className = 'product-card';
             card.dataset.index = idx;
 
-            // AHORA SÍ: Usamos la etiqueta <img> con la ruta local
+            // Usamos la etiqueta <img> con la ruta local
             card.innerHTML = `
                 <div class="image-wrapper">
                     <img src="${imgName}" 
@@ -470,9 +559,9 @@
                         <i class="fas fa-palette"></i> ${prendasData[idx].color}
                     </div>
                     <div class="product-tags">
-                        <span class="tag">${prendasData[idx].genero}</span>
                         <span class="tag">${prendasData[idx].estilo}</span>
                         <span class="tag">${prendasData[idx].temporada}</span>
+                        <span class="tag">${prendasData[idx].tela}</span>
                     </div>
                 </div>
             `;
@@ -491,7 +580,12 @@
                          alt="${data.nombre}"
                          loading="lazy">
                 </div>
-                <h3 style="color: #fff; font-family: 'Cormorant Garamond'; font-size: 1.5rem; margin-bottom: 15px;">Características</h3>
+                <h3 style="color: #fff; font-family: 'Cormorant Garamond'; font-size: 1.5rem; margin-bottom: 15px;">Detalles del producto</h3>
+                
+                <p style="color: #dddddd; margin-bottom: 20px; font-style: italic; border-left: 3px solid #b35e5e; padding-left: 15px;">
+                    "${data.descripcion}"
+                </p>
+                
                 <ul class="feature-list">
                     <li><i class="fas fa-fill-drip"></i> <strong>Color:</strong> ${data.color}</li>
                     <li><i class="fas fa-user-tie"></i> <strong>Género:</strong> ${data.genero}</li>
