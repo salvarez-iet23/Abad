@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos · Boutique Closet Store</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .top-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .elegant-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-logo {
+            width: auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(180, 100, 100, 0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            display: block;
+            border-radius: 50%;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            line-height: 1.2;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .welcome-title span {
+            color: #b35e5e;
+        }
+
+        .by-line {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .by-line i {
+            color: #b35e5e;
+            margin: 0 8px;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            min-height: 60vh;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(180, 100, 100, 0.3);
+            padding-bottom: 20px;
+        }
+
+        .page-title i {
+            color: #b35e5e;
+            margin-right: 15px;
+        }
+
+        .about-card {
+            background: rgba(15,15,15,0.8);
+            border: 1px solid rgba(180, 100, 100, 0.2);
+            border-radius: 8px;
+            padding: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #b35e5e;
+            text-align: right;
+            margin-top: 40px;
+            border-top: 1px solid rgba(180, 100, 100, 0.3);
+            padding-top: 30px;
+        }
+
+        .signature i {
+            font-size: 1rem;
+            margin: 0 10px;
+            color: #ffffff;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #b35e5e;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #b35e5e;
+            color: #000000;
+        }
+
+        .back-button i {
+            margin-right: 10px;
+        }
+
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: #888888;
+        }
+
+        .footer i {
+            color: #b35e5e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <div class="elegant-header">
+            <div class="header-logo">
+                <img src="https://i.pinimg.com/1200x/88/84/7d/88847d4f5c0d8413bee9c793afcb36d1.jpg" alt="Boutique Closet Store" style="width: 100px; height: 100px; border-radius: 50%;">
+            </div>
+            <div class="header-text">
+                <div class="welcome-title">
+                    <span>Boutique Closet Store</span>
+                </div>
+                <div class="by-line">
+                    <i class="fas fa-minus"></i> by Daniela Abad <i class="fas fa-minus"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container page-content">
+    <h1 class="page-title"><i class="fas fa-users"></i> Quiénes Somos</h1>
+    
+    <div class="about-card">
+        <div class="about-text">
+            <p><strong>Boutique Closet Store</strong> nace de la pasión por la moda y el deseo de ofrecer a nuestros clientes una experiencia de compra única y personalizada. Somos un equipo de amantes de la moda que selecciona cuidadosamente cada prenda pensando en quienes buscan expresar su personalidad a través de lo que visten.</p>
+            
+            <p>Nuestra historia comienza con Daniela Abad, fundadora y directora creativa, quien después de años de experiencia en el mundo de la moda, decidió crear un espacio donde la elegancia, la comodidad y las tendencias se encuentren para ofrecer lo mejor de cada temporada.</p>
+            
+            <p>Hoy, somos una boutique en crecimiento que atiende a hombres y mujeres que valoran la calidad y el diseño, ofreciendo una cuidada selección de prendas casuales, urbanas y elegantes que se adaptan a todos los estilos de vida.</p>
+            
+            <p>Nuestro equipo está conformado por asesores de imagen, estilistas y apasionados por la moda que trabajan juntos para brindar una atención cercana y profesional, ayudando a cada cliente a encontrar su outfit ideal.</p>
+            
+            <div class="signature">
+                Daniela Abad <i class="fas fa-heart"></i> Fundadora
+            </div>
+        </div>
+        
+        <a href="PAGINA PRINCIPAL.html" class="back-button"><i class="fas fa-arrow-left"></i> VOLVER A INICIO</a>
+    </div>
+</div>
+
+<div class="footer">
+    <i class="fas fa-copyright"></i> by Daniela Abad · quienes somos · boutique closet store
+</div>
+
+</body>
+</html>
