@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería · Boutique Closet Store</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .top-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .elegant-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-logo {
+            width: auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(180, 100, 100, 0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            display: block;
+            border-radius: 50%;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .welcome-title span {
+            color: #b35e5e;
+        }
+
+        .by-line {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .by-line i {
+            color: #b35e5e;
+            margin: 0 8px;
+        }
+
+        .page-content {
+            padding: 40px 0 60px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page-title i {
+            color: #b35e5e;
+        }
+
+        .gallery-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .photo-count {
+            color: #b35e5e;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .instagram-style {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #888;
+        }
+
+        .instagram-style i {
+            color: #b35e5e;
+            font-size: 1.5rem;
+        }
+
+        /* 🎨 GALERÍA ESTILO INSTAGRAM - 3 COLUMNAS */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            background: #000;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay i {
+            color: white;
+            font-size: 2rem;
+            background: rgba(180,100,100,0.8);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        /* Modal para ver imagen grande */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-container {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-container img {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            border: 2px solid rgba(180,100,100,0.3);
+            border-radius: 4px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #b35e5e;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(180,100,100,0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-nav:hover {
+            background: #b35e5e;
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 40px 0 20px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #b35e5e;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #b35e5e;
+            color: #000000;
+        }
+
+        .back-button i {
+            margin-right: 10px;
+        }
+
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: #888888;
+        }
+
+        .footer i {
+            color: #b35e5e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <div class="elegant-header">
+            <div class="header-logo">
+                <img src="https://i.pinimg.com/1200x/88/84/7d/88847d4f5c0d8413bee9c793afcb36d1.jpg" alt="Boutique Closet Store" style="width: 100px; height: 100px; border-radius: 50%;">
+            </div>
+            <div class="header-text">
+                <div class="welcome-title">
+                    <span>Boutique Closet Store</span>
+                </div>
+                <div class="by-line">
+                    <i class="fas fa-minus"></i> by Daniela Abad <i class="fas fa-minus"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container page-content">
+    <div class="page-title">
+        <i class="fas fa-images"></i> GALERÍA INSTAGRAM
+    </div>
+    
+    <div class="gallery-info">
+        <span class="photo-count">9 fotos</span>
+        <div class="instagram-style">
+            <i class="fab fa-instagram"></i>
+            <span>@boutiqueclosetstore</span>
+        </div>
+    </div>
+    
+    <!-- GALERÍA ESTILO INSTAGRAM -->
+    <div class="gallery-grid" id="galleryGrid"></div>
+    
+    <div style="text-align: center;">
+        <a href="PAGINA PRINCIPAL.html" class="back-button"><i class="fas fa-arrow-left"></i> VOLVER A INICIO</a>
+    </div>
+</div>
+
+<!-- MODAL PARA VER IMAGEN GRANDE -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-container">
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+        <button class="modal-nav modal-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img id="modalImage" src="" alt="Vista previa">
+        <button class="modal-nav modal-next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+
+<div class="footer">
+    <i class="fas fa-copyright"></i> by Daniela Abad · galería estilo instagram
+</div>
+
+<script>
+    (function() {
+        // Todas tus imágenes (imagen1.jpg a imagen9.jpg)
+        const imageNames = [
+            'imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg', 
+            'imagen4.jpg', 'imagen5.jpg', 'imagen6.jpg',
+            'imagen7.jpg', 'imagen8.jpg', 'imagen9.jpg'
+        ];
+        
+        const galleryGrid = document.getElementById('galleryGrid');
+        const overlay = document.getElementById('modalOverlay');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        
+        // Crear la galería
+        imageNames.forEach((imgName, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${imgName}" alt="Foto ${index + 1}" loading="lazy">
+                <div class="gallery-item-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            `;
+            
+            item.addEventListener('click', () => openModal(index));
+            galleryGrid.appendChild(item);
+        });
+        
+        // Abrir modal
+        function openModal(index) {
+            currentIndex = index;
+            modalImage.src = imageNames[currentIndex];
+            overlay.style.display = 'flex';
+        }
+        
+        // Cerrar modal
+        closeBtn.onclick = () => {
+            overlay.style.display = 'none';
+        };
+        
+        overlay.onclick = (e) => {
+            if (e.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        };
+        
+        // Navegación
+        prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + imageNames.length) % imageNames.length;
+            modalImage.src = imageNames[currentIndex];
+        };
+        
+        nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % imageNames.length;
+            modalImage.src = imageNames[currentIndex];
+        };
+        
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            if (overlay.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    overlay.style.display = 'none';
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + imageNames.length) % imageNames.length;
+                    modalImage.src = imageNames[currentIndex];
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % imageNames.length;
+                    modalImage.src = imageNames[currentIndex];
+                }
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>
