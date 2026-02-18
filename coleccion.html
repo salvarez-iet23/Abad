@@ -7,364 +7,55 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .top-bar {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .elegant-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .header-logo {
-            width: auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid rgba(180, 100, 100, 0.5);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-            flex-shrink: 0;
-        }
-
-        .header-logo img {
-            display: block;
-            border-radius: 50%;
-        }
-
-        .header-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .welcome-title {
-            font-size: 2.5rem;
-            color: #ffffff;
-            line-height: 1.2;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .welcome-title span {
-            color: #b35e5e;
-        }
-
-        .by-line {
-            font-size: 1.1rem;
-            color: #aaaaaa;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        .by-line i {
-            color: #b35e5e;
-            margin: 0 8px;
-        }
-
-        .page-content {
-            padding: 40px 0 60px;
-        }
-
-        .page-title {
-            font-size: 3rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .page-title i {
-            color: #b35e5e;
-        }
-
-        .collection-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .item-count {
-            color: #b35e5e;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .filter-bar {
-            display: flex;
-            gap: 15px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #ffffff;
-            padding: 8px 20px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 30px;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            border-color: #b35e5e;
-            color: #b35e5e;
-        }
-
-        .grid-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: rgba(15,15,15,0.8);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-        }
-
-        .product-card:hover {
-            border-color: #b35e5e;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(180, 100, 100, 0.2);
-        }
-
-        .image-wrapper {
-            aspect-ratio: 3 / 4;
-            background: #0f0f0f;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .image-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 18px 15px;
-        }
-
-        .product-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .product-price {
-            color: #b35e5e;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-        }
-
-        .product-colors {
-            font-size: 0.8rem;
-            color: #888888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .product-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .tag {
-            background: rgba(180, 100, 100, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            border: 1px solid rgba(180, 100, 100, 0.2);
-            color: #cccccc;
-        }
-
-        .back-button {
-            display: inline-block;
-            margin: 40px 0 20px;
-            padding: 12px 30px;
-            background: transparent;
-            border: 1px solid #b35e5e;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-            background: #b35e5e;
-            color: #000000;
-        }
-
-        .back-button i {
-            margin-right: 10px;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal-container {
-            background: #0f0f0f;
-            max-width: 600px;
-            width: 90%;
-            border-radius: 4px;
-            border: 1px solid rgba(180, 100, 100, 0.3);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-header {
-            padding: 25px 30px 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #ffffff;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 2.5rem;
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            color: #b35e5e;
-        }
-
-        .modal-body {
-            padding: 30px;
-        }
-
-        .modal-img {
-            width: 100%;
-            height: 250px;
-            background: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-            margin-bottom: 25px;
-        }
-
-        .modal-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px dashed rgba(255,255,255,0.05);
-            display: flex;
-            gap: 15px;
-            color: #cccccc;
-        }
-
-        .feature-list i {
-            width: 25px;
-            color: #b35e5e;
-        }
-
-        .price-badge {
-            background: rgba(180, 100, 100, 0.1);
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(180, 100, 100, 0.3);
-            margin: 25px 0 10px;
-        }
-
-        .final-price {
-            font-size: 2.2rem;
-            color: #b35e5e;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .footer {
-            padding: 40px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-            color: #888888;
-        }
-
-        .footer i {
-            color: #b35e5e;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#000;color:#fff;font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.6}
+        h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400}
+        .container{max-width:1400px;margin:0 auto;padding:0 40px}
+        .top-bar{padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .elegant-header{display:flex;align-items:center;gap:30px}
+        .header-logo{width:auto;border-radius:50%;overflow:hidden;border:3px solid rgba(180,100,100,0.5);box-shadow:0 8px 25px rgba(0,0,0,0.6);flex-shrink:0}
+        .header-logo img{display:block;border-radius:50%}
+        .welcome-title{font-size:2.5rem;color:#fff;line-height:1.2}
+        .welcome-title span{color:#b35e5e}
+        .by-line{font-size:1.1rem;color:#aaa;letter-spacing:1.5px;text-transform:uppercase;margin-top:5px}
+        .by-line i{color:#b35e5e;margin:0 8px}
+        .page-content{padding:40px 0 60px}
+        .page-title{font-size:3rem;color:#fff;margin-bottom:20px;display:flex;align-items:center;gap:20px}
+        .page-title i{color:#b35e5e}
+        .collection-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .item-count{color:#b35e5e;font-size:1.1rem;letter-spacing:1px}
+        .filter-bar{display:flex;gap:15px}
+        .filter-btn{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:8px 20px;font-size:0.9rem;cursor:pointer;transition:all 0.3s ease;border-radius:30px}
+        .filter-btn:hover,.filter-btn.active{border-color:#b35e5e;color:#b35e5e}
+        .grid-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px}
+        .product-card{background:rgba(15,15,15,0.8);border:1px solid rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;transition:all 0.3s ease;cursor:pointer;backdrop-filter:blur(5px)}
+        .product-card:hover{border-color:#b35e5e;transform:translateY(-8px);box-shadow:0 15px 30px rgba(180,100,100,0.2)}
+        .image-wrapper{aspect-ratio:3/4;background:#0f0f0f;overflow:hidden}
+        .image-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
+        .product-card:hover .image-wrapper img{transform:scale(1.05)}
+        .product-info{padding:18px 15px}
+        .product-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:#fff;display:flex;justify-content:space-between;margin-bottom:8px}
+        .product-price{color:#b35e5e;font-family:'Montserrat',sans-serif;font-weight:400}
+        .product-colors{font-size:0.8rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+        .product-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+        .tag{background:rgba(180,100,100,0.1);padding:4px 12px;border-radius:20px;font-size:0.7rem;border:1px solid rgba(180,100,100,0.2);color:#ccc}
+        .back-button{display:inline-block;margin:40px 0 20px;padding:12px 30px;background:transparent;border:1px solid #b35e5e;color:#fff;text-decoration:none;font-size:1rem;letter-spacing:2px;transition:all 0.3s ease}
+        .back-button:hover{background:#b35e5e;color:#000}
+        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);backdrop-filter:blur(8px);align-items:center;justify-content:center;z-index:1000}
+        .modal-container{background:#0f0f0f;max-width:600px;width:90%;border-radius:4px;border:1px solid rgba(180,100,100,0.3);animation:fadeIn 0.3s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .modal-header{padding:25px 30px 10px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center}
+        .modal-header h2{font-size:2rem;font-weight:400;color:#fff}
+        .modal-close{background:none;border:none;color:#666;font-size:2.5rem;cursor:pointer;transition:color 0.2s;line-height:1}
+        .modal-close:hover{color:#b35e5e}
+        .modal-body{padding:30px}
+        .modal-img{width:100%;height:250px;background:#0a0a0a;border:1px solid rgba(255,255,255,0.05);overflow:hidden;margin-bottom:25px}
+        .modal-img img{width:100%;height:100%;object-fit:cover;display:block}
+        .feature-list{list-style:none;margin:20px 0}
+        .feature-list li{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.05);display:flex;gap:15px;color:#ccc}
+        .feature-list i{width:25px;color:#b35e5e}
+        .price-badge{background:rgba(180,100,100,0.1);padding:18px 25px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(180,100,100,0.3);margin:25px 0 10px}
+        .final-price{font-size:2.2rem;color:#b35e5e}
     </style>
 </head>
 <body>
@@ -373,41 +64,31 @@
     <div class="container">
         <div class="elegant-header">
             <div class="header-logo">
-                <img src="https://i.pinimg.com/1200x/88/84/7d/88847d4f5c0d8413bee9c793afcb36d1.jpg" alt="Boutique Closet Store" style="width: 100px; height: 100px; border-radius: 50%;">
+                <img src="https://i.pinimg.com/1200x/88/84/7d/88847d4f5c0d8413bee9c793afcb36d1.jpg" alt="Boutique Closet Store" style="width:100px;height:100px;border-radius:50%;">
             </div>
-            <div class="header-text">
-                <div class="welcome-title">
-                    <span>Boutique Closet Store</span>
-                </div>
-                <div class="by-line">
-                    <i class="fas fa-minus"></i> by Daniela Abad <i class="fas fa-minus"></i>
-                </div>
+            <div>
+                <div class="welcome-title"><span>Boutique Closet Store</span></div>
+                <div class="by-line"><i class="fas fa-minus"></i> by Daniela Abad <i class="fas fa-minus"></i></div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container page-content">
-    <div class="page-title">
-        <i class="fas fa-camera-retro"></i> COLECCIÓN COMPLETA
-    </div>
-    
+    <div class="page-title"><i class="fas fa-camera-retro"></i> COLECCIÓN COMPLETA</div>
     <div class="collection-info">
-        <span class="item-count">10 productos</span>
+        <span class="item-count">9 productos</span>
         <div class="filter-bar">
             <button class="filter-btn active">Todos</button>
             <button class="filter-btn">Mujer</button>
         </div>
     </div>
-    
     <div class="grid-images" id="productGrid"></div>
-    
-    <div style="text-align: center;">
+    <div style="text-align:center;">
         <a href="PAGINA PRINCIPAL.html" class="back-button"><i class="fas fa-arrow-left"></i> VOLVER A INICIO</a>
     </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-container">
         <div class="modal-header">
@@ -418,200 +99,87 @@
     </div>
 </div>
 
-<div class="footer">
-    <i class="fas fa-copyright"></i> by Daniela Abad · colección completa · boutique closet store
-</div>
+<div class="footer"><i class="fas fa-copyright"></i> by Daniela Abad · colección completa · boutique closet store</div>
 
 <script>
-    (function() {
-        // Generar nombres de archivo imagen1.jpg a imagen10.jpg
-        const imageNames = [];
-        for (let i = 1; i <= 10; i++) imageNames.push(`imagen${i}.jpg`);
+(function(){
+const imageNames = [
+'imagen1.jpg','imagen2.jpg','imagen3.jpg','imagen4.jpg','imagen5.jpg','imagen6.jpg','imagen7.jpg','imagen8.jpg','imagen9.jpg'
+];
 
-        // 🎯 NUEVAS DESCRIPCIONES BASADAS EN TU CAPTURA
-        const prendasData = [
-            { 
-                nombre: "Blusa Parisina", 
-                precio: "$42.990", 
-                color: "Blanco / Negro", 
-                genero: "Mujer", 
-                tela: "Viscosa", 
-                estilo: "Elegante", 
-                temporada: "Primavera",
-                descripcion: "Blusa con mangas bombachas y cuello drapeado. Cierre posterior con botón forrado."
-            },
-            { 
-                nombre: "Vestido Floreado", 
-                precio: "$55.900", 
-                color: "Multicolor", 
-                genero: "Mujer", 
-                tela: "Poliéster", 
-                estilo: "Casual", 
-                temporada: "Verano",
-                descripcion: "Vestido largo con estampado floral, escote en V y mangas cortas. Incluye cintilla ajustable."
-            },
-            { 
-                nombre: "Falda Plisada", 
-                precio: "$39.500", 
-                color: "Mostaza", 
-                genero: "Mujer", 
-                tela: "Gabardina", 
-                estilo: "Urbano", 
-                temporada: "Otoño",
-                descripcion: "Falda midi plisada con pretina elástica. Ideal para look de oficina o casual elegante."
-            },
-            { 
-                nombre: "Vestido Negro", 
-                precio: "$48.990", 
-                color: "Negro", 
-                genero: "Mujer", 
-                tela: "Poliéster", 
-                estilo: "Fiesta", 
-                temporada: "Invierno",
-                descripcion: "Vestido negro ajustado, escote palabra de honor. Cierre lateral y forro interior."
-            },
-            { 
-                nombre: "Chaqueta Denim", 
-                precio: "$69.900", 
-                color: "Celeste", 
-                genero: "Mujer", 
-                tela: "Algodón", 
-                estilo: "Casual", 
-                temporada: "Primavera",
-                descripcion: "Chaqueta corta de denim con bolsillos frontales. Botones metálicos y detalles desgastados."
-            },
-            { 
-                nombre: "Sweater Oversize", 
-                precio: "$36.500", 
-                color: "Gris", 
-                genero: "Mujer", 
-                tela: "Acrílico", 
-                estilo: "Invierno", 
-                temporada: "Otoño",
-                descripcion: "Sweater de punto grueso, cuello redondo y mangas largas. Diseño oversize para máxima comodidad."
-            },
-            { 
-                nombre: "Blusa Satinada", 
-                precio: "$38.990", 
-                color: "Vino", 
-                genero: "Mujer", 
-                tela: "Seda", 
-                estilo: "Moderno", 
-                temporada: "Verano",
-                descripcion: "Blusa con lazo frontal y mangas largas. Tejido satinado con caída elegante."
-            },
-            { 
-                nombre: "Blazer Formal", 
-                precio: "$79.900", 
-                color: "Carbón", 
-                genero: "Mujer", 
-                tela: "Tejido", 
-                estilo: "Oficina", 
-                temporada: "Invierno",
-                descripcion: "Blazer estructurado con solapas y bolsillos. Forro interior y botones dorados."
-            },
-            { 
-                nombre: "Top Crop", 
-                precio: "$22.990", 
-                color: "Blanco", 
-                genero: "Mujer", 
-                tela: "Algodón", 
-                estilo: "Deportivo", 
-                temporada: "Verano",
-                descripcion: "Top corto con espalda descubierta y tiras ajustables. Fresco y versátil."
-            },
-            { 
-                nombre: "Vestido Estampado", 
-                precio: "$59.900", 
-                color: "Azul / Rojo", 
-                genero: "Mujer", 
-                tela: "Sublimada", 
-                estilo: "Elegante", 
-                temporada: "Primavera",
-                descripcion: "Vestido largo con estampado étnico, escote en V y abertura lateral. Incluye forro interior."
-            }
-        ];
+const prendasData = [
+{nombre:'Camisa Beige a Rayas',precio:'$36.990',color:'Beige / Blanco',genero:'Mujer',tela:'Algodón',estilo:'Casual Chic',temporada:'Primavera',
+descripcion:'Camisa beige de rayas verticales blancas, de corte relajado y puños doblados. Ideal para un look fresco y elegante, perfecta para combinar con jeans claros.'},
 
-        const grid = document.getElementById('productGrid');
-        const overlay = document.getElementById('modalOverlay');
-        const modalBody = document.getElementById('modalBody');
-        const modalTitle = document.getElementById('modalTitle');
-        const closeBtn = document.getElementById('closeModalBtn');
+{nombre:'Conjunto Negro Minimalista',precio:'$59.990',color:'Negro',genero:'Mujer',tela:'Poliéster',estilo:'Moderno',temporada:'Otoño',
+descripcion:'Conjunto de blusa corta con botones dorados y pantalón de pinzas de tiro alto. Diseño estructurado y sofisticado con acabado mate.'},
 
-        imageNames.forEach((imgName, idx) => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.dataset.index = idx;
+{nombre:'Jeans Denim Vintage',precio:'$44.900',color:'Azul claro / Azul medio',genero:'Mujer',tela:'Denim',estilo:'Casual',temporada:'Todo el año',
+descripcion:'Jeans de mezclilla estilo vintage con corte recto y talle alto. Disponibles en dos tonos: azul claro y azul medio, con efecto lavado.'},
 
-            // Usamos la etiqueta <img> con la ruta local
-            card.innerHTML = `
-                <div class="image-wrapper">
-                    <img src="${imgName}" 
-                         alt="${prendasData[idx].nombre}"
-                         loading="lazy">
-                </div>
-                <div class="product-info">
-                    <div class="product-name">
-                        <span>${prendasData[idx].nombre}</span>
-                        <span class="product-price">${prendasData[idx].precio}</span>
-                    </div>
-                    <div class="product-colors">
-                        <i class="fas fa-palette"></i> ${prendasData[idx].color}
-                    </div>
-                    <div class="product-tags">
-                        <span class="tag">${prendasData[idx].estilo}</span>
-                        <span class="tag">${prendasData[idx].temporada}</span>
-                        <span class="tag">${prendasData[idx].tela}</span>
-                    </div>
-                </div>
-            `;
+{nombre:'Polo Gris con Bordado',precio:'$32.990',color:'Gris',genero:'Mujer',tela:'Algodón',estilo:'Casual',temporada:'Verano',
+descripcion:'Playera tipo polo gris con botones frontales y pequeño bordado de caballo. Estilo versátil y cómodo para uso diario o semicasual.'},
 
-            card.addEventListener('click', () => mostrarModal(idx));
-            grid.appendChild(card);
-        });
+{nombre:'Chaqueta Beige Corta',precio:'$65.900',color:'Beige',genero:'Mujer',tela:'Lana sintética',estilo:'Elegante',temporada:'Invierno',
+descripcion:'Chaqueta corta beige con cierre frontal, bolsillos con solapa y botones dorados. Ideal para complementar looks de media estación.'},
 
-        function mostrarModal(index) {
-            const data = prendasData[index];
-            modalTitle.innerText = data.nombre;
+{nombre:'Suéter Gris con Chaleco de Punto',precio:'$49.900',color:'Gris / Azul',genero:'Mujer',tela:'Algodón y Acrílico',estilo:'Preppy',temporada:'Otoño',
+descripcion:'Camisa de rayas azul con chaleco tejido gris en punto trenzado. Un clásico look universitario moderno y cálido.'},
 
-            modalBody.innerHTML = `
-                <div class="modal-img">
-                    <img src="${imageNames[index]}" 
-                         alt="${data.nombre}"
-                         loading="lazy">
-                </div>
-                <h3 style="color: #fff; font-family: 'Cormorant Garamond'; font-size: 1.5rem; margin-bottom: 15px;">Detalles del producto</h3>
-                
-                <p style="color: #dddddd; margin-bottom: 20px; font-style: italic; border-left: 3px solid #b35e5e; padding-left: 15px;">
-                    "${data.descripcion}"
-                </p>
-                
-                <ul class="feature-list">
-                    <li><i class="fas fa-fill-drip"></i> <strong>Color:</strong> ${data.color}</li>
-                    <li><i class="fas fa-user-tie"></i> <strong>Género:</strong> ${data.genero}</li>
-                    <li><i class="fas fa-vest"></i> <strong>Estilo:</strong> ${data.estilo}</li>
-                    <li><i class="fas fa-cut"></i> <strong>Material:</strong> ${data.tela}</li>
-                    <li><i class="fas fa-calendar"></i> <strong>Temporada:</strong> ${data.temporada}</li>
-                </ul>
-                <div class="price-badge">
-                    <span>Precio final</span>
-                    <span class="final-price">${data.precio}</span>
-                </div>
-            `;
-            overlay.style.display = 'flex';
-        }
+{nombre:'Suéter Marrón con Cremallera',precio:'$52.900',color:'Marrón',genero:'Mujer',tela:'Algodón',estilo:'Casual Elegante',temporada:'Otoño',
+descripcion:'Suéter marrón con cuello alto y cremallera corta. Detalle de cinturón marrón que aporta un toque clásico y sobrio.'},
 
-        closeBtn.onclick = () => overlay.style.display = 'none';
-        overlay.onclick = (e) => { if (e.target === overlay) overlay.style.display = 'none'; };
-        
-        // Filtros (simulados - solo cambio visual)
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    })();
+{nombre:'Bailarinas de Charol Vino',precio:'$41.500',color:'Vino tinto',genero:'Mujer',tela:'Charol sintético',estilo:'Romántico',temporada:'Primavera',
+descripcion:'Zapatos tipo bailarinas color vino tinto en charol, con detalle de lazo y cierre ajustable. Elegantes y cómodas.'},
+
+{nombre:'Jeans Skinny Grises',precio:'$39.900',color:'Gris / Negro',genero:'Mujer',tela:'Denim elástico',estilo:'Urbano',temporada:'Todo el año',
+descripcion:'Jeans skinny de mezclilla gris y negra con cintura alta. Estilo moderno y favorecedor para combinar con blusas o chaquetas.'}
+];
+
+const grid=document.getElementById('productGrid');
+const overlay=document.getElementById('modalOverlay');
+const modalBody=document.getElementById('modalBody');
+const modalTitle=document.getElementById('modalTitle');
+const closeBtn=document.getElementById('closeModalBtn');
+
+imageNames.forEach((imgName,idx)=>{
+const card=document.createElement('div');
+card.className='product-card';
+card.dataset.index=idx;
+card.innerHTML=`
+<div class="image-wrapper"><img src="${imgName}" alt="${prendasData[idx].nombre}" loading="lazy"></div>
+<div class="product-info">
+<div class="product-name"><span>${prendasData[idx].nombre}</span><span class="product-price">${prendasData[idx].precio}</span></div>
+<div class="product-colors"><i class="fas fa-palette"></i> ${prendasData[idx].color}</div>
+<div class="product-tags">
+<span class="tag">${prendasData[idx].estilo}</span>
+<span class="tag">${prendasData[idx].temporada}</span>
+<span class="tag">${prendasData[idx].tela}</span>
+</div></div>`;
+card.addEventListener('click',()=>mostrarModal(idx));
+grid.appendChild(card);
+});
+
+function mostrarModal(index){
+const d=prendasData[index];
+modalTitle.innerText=d.nombre;
+modalBody.innerHTML=`
+<div class="modal-img"><img src="${imageNames[index]}" alt="${d.nombre}" loading="lazy"></div>
+<h3 style="color:#fff;font-family:'Cormorant Garamond';font-size:1.5rem;margin-bottom:15px;">Detalles del producto</h3>
+<p style="color:#ddd;margin-bottom:20px;font-style:italic;border-left:3px solid #b35e5e;padding-left:15px;">"${d.descripcion}"</p>
+<ul class="feature-list">
+<li><i class="fas fa-fill-drip"></i><strong>Color:</strong> ${d.color}</li>
+<li><i class="fas fa-user-tie"></i><strong>Género:</strong> ${d.genero}</li>
+<li><i class="fas fa-vest"></i><strong>Estilo:</strong> ${d.estilo}</li>
+<li><i class="fas fa-cut"></i><strong>Material:</strong> ${d.tela}</li>
+<li><i class="fas fa-calendar"></i><strong>Temporada:</strong> ${d.temporada}</li>
+</ul>
+<div class="price-badge"><span>Precio final</span><span class="final-price">${d.precio}</span></div>`;
+overlay.style.display='flex';
+}
+closeBtn.onclick=()=>overlay.style.display='none';
+overlay.onclick=e=>{if(e.target===overlay)overlay.style.display='none';};
+})();
 </script>
 
 </body>
